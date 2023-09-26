@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from "react";
 
 export const HW3 = () => {
   // 1️⃣ Раскомментируйте JSX(HW3.tsx) и вы увидите,
@@ -9,41 +9,45 @@ export const HW3 = () => {
   // - дописать функциональность (где указано комментариями)
   // - приложение должно компилироваться и запускаться в браузере
 
-
-  const [currentText, setCurrentText] = useState('');
+  const [currentText, setCurrentText] = useState("");
   const [texts, setTexts] = useState<string[]>([
-    'То, что вы делаете по ночам, то и делает вас богатым. (Аль Капоне)',
+    "То, что вы делаете по ночам, то и делает вас богатым. (Аль Капоне)",
   ]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-     setCurrentText(event.currentTarget.value);
+    setCurrentText(event.currentTarget.value);
   };
 
   const handleSave = () => {
-    setTexts([...texts, currentText])
-    setCurrentText('');
+    setTexts([...texts, currentText]);
+    setCurrentText("");
   };
 
   return (
-    <div id={'hw03'}>
-      {currentText ?
-  (<h1 id={'hw03-text'}>{currentText}</h1>)
-       : (
-       <h1 id={'hw03-default-text'}>Здесь появится новое дело</h1> // ничего не меняем, здесь все норм
+    <div id={"hw03"}>
+      {currentText ? (
+        <h1 id={"hw03-text"}>{currentText}</h1>
+      ) : (
+        <h1 id={"hw03-default-text"}>Здесь появится новое дело</h1> // ничего не меняем, здесь все норм
       )}
 
-      <input id={'hw03-input'} type="text" value={currentText} onChange={handleChange} />
+      <input
+        id={"hw03-input"}
+        type="text"
+        value={currentText}
+        onChange={handleChange}
+      />
 
-      <button id={'hw03-button'} onClick={handleSave}></button>
+      <button id={"hw03-button"} onClick={handleSave}></button>
 
-      <h1 style={{ marginTop: '50px' }}>СПИСОК ДЕЛ НА ДЕНЬ:</h1>
+      <h1 style={{ marginTop: "50px" }}>СПИСОК ДЕЛ НА ДЕНЬ:</h1>
 
-     <ol id={'hw03-tasks'}>
-       {texts.map((el, index) => {
+      <ol id={"hw03-tasks"}>
+        {texts.map((el, index) => {
           return (
             <li key={index} id={`hw03-task-${index}`}>
-             {el}
-           </li>
+              {el}
+            </li>
           );
         })}
       </ol>
